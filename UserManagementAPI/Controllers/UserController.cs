@@ -64,5 +64,17 @@ namespace UserManagementAPI.Controllers
                 return Ok(response);
             
         }
+
+             [HttpDelete("{id}")]
+       
+        public IActionResult Update(int id)
+        {
+            Response response = _userService.Delete(id);
+            if (response.IsSuccess)
+                return Ok("Kullanıcı silme başarılı");
+            else
+                return Ok(response);
+            
+        }
     }
 }

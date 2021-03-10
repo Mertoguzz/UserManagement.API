@@ -20,16 +20,16 @@ namespace UserManagementAPI.Services
 
 
         }
-        public Response Delete(string ID)
+        public Response Delete(int ID)
         {
             _response = new Response();
-            if (Helper.IsEmptyString(ID))
+            if (Helper.IsEmptyString(Convert.ToString(ID)))
             {
                 _response.IsSuccess = false;
                 _response.Data = new Error("ID cannot be empty"); ;
                 return _response;
             }
-            if (!Helper.IsNumeric(ID))
+            if (!Helper.IsNumeric(ID.ToString()))
             {
                 _response.IsSuccess = false;
                 _response.Data = new Error("ID must be numerical"); ;
@@ -172,7 +172,7 @@ namespace UserManagementAPI.Services
                 {
                     TCKN = _helpers.CreateRandomTCKN();
                     dbUser = _ctx.Users.Where(r => r.TCKN == TCKN).FirstOrDefault();
-                } while (dbUser == null);
+                } while (dbUser != null);
 
 
                 User regUser = new User

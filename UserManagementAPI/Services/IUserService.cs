@@ -14,7 +14,7 @@ namespace UserManagementAPI.Service
 
         Response Get();
 
-        Response Delete(string TCKN);
+        Response Delete(int TCKN);
 
 
     }
